@@ -21,3 +21,6 @@ g3<-Aux_Gal%>%ggplot(aes(Fecha,Muertos))+geom_point()+geom_line()
 
 o2<-Galicia_own%>%ggplot(aes(Fecha,Muertes_Acumuladas))+geom_point()+geom_line()
 o3<-Galicia_own%>%ggplot(aes(Fecha,Muertes))+geom_point()+geom_line()
+
+o21<-Galicia_own%>%ggplot(aes(Fecha,Casos_Acumulados))+geom_point()+geom_line()
+o31<-Galicia_own%>%ggplot(aes(Fecha,Nuevos_contagios))+geom_point()+geom_line()
