@@ -1,4 +1,6 @@
 library(tidyverse)
+library(dslabs)
+ds_theme_set()
 Galicia <- read_csv("data/galicia.csv")
 Lugo <- read_csv("data/lugo.csv")
 Galicia_own<-read_csv("gal.csv")
@@ -24,3 +26,6 @@ o3<-Galicia_own%>%ggplot(aes(Fecha,Muertes))+geom_point()+geom_line()
 
 o21<-Galicia_own%>%ggplot(aes(Fecha,Casos_Acumulados))+geom_point()+geom_line()
 o31<-Galicia_own%>%ggplot(aes(Fecha,Nuevos_contagios))+geom_point()+geom_line()
+
+
+c1<-Galicia_own%>%filter(Fecha>="01-06-2020")%>%ggplot(aes(Nuevos_contagios,Muertes))+geom_point(alpha = 0.5)
