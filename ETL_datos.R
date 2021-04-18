@@ -1,5 +1,6 @@
 library(tidyverse)
 library(dslabs)
+library(gridExtra)
 ds_theme_set()
 Galicia <- read_csv("data/galicia.csv")
 Lugo <- read_csv("data/lugo.csv")
@@ -28,4 +29,18 @@ o21<-Galicia_own%>%ggplot(aes(Fecha,Casos_Acumulados))+geom_point()+geom_line()
 o31<-Galicia_own%>%ggplot(aes(Fecha,Nuevos_contagios))+geom_point()+geom_line()
 
 
+#Representación grafica de muertes y nuevos contagios
+
+grid.arrange(o3,o31)
+layout(matrix(c(1,2),2,2,byrow=F))
+plot(Galicia_own$Fecha,Galicia_own$Nuevos_contagios)
+plot(Galicia_own$Fecha,Galicia_own$Muertes)
+
+
 c1<-Galicia_own%>%filter(Fecha>="01-06-2020")%>%ggplot(aes(Nuevos_contagios,Muertes))+geom_point(alpha = 0.5)
+Galicia_own%>%summarize(r=cor(Nuevos_contagios,Muertes))%>%pull(r)
+
+
+
+Muertes_hat = lm(Muertes~Nuevos_contagios, data=Galicia_own)
+summary(Muertes_hat)
