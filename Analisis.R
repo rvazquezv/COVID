@@ -15,3 +15,7 @@ summary(Muertes_hat)
 Muertes_hat %>% ggplot(aes(Nuevos_contagios, Muertes)) +
   geom_point() + 
   geom_smooth(color="red", span = 0.05, method = "loess", method.args = list(degree=1))
+
+Galicia_own%>%ggplot(aes(Fecha,Muertes))+geom_point()+geom_line()+geom_smooth(color="red", span = 0.05, method = "loess", method.args = list(degree=1))
+
+Galicia_own%>%ggplot(aes(Fecha,Nuevos_contagios))+geom_point()+geom_line()+geom_smooth(color="red", span = 0.05, method = "loess", method.args = list(degree=1))
